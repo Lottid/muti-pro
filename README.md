@@ -17,3 +17,13 @@ npm run build
 ```
 ## 文件说明
 *  pro.config.json----本地预览地址及反向代理设置
+*  src/stores ---- 存放公用vuex模块，并增加了命名空间
+``` bash
+export default {
+  namespaced: true,
+  state,
+  getters,
+  actions,
+  mutations
+}
+```
