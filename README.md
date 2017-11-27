@@ -16,5 +16,4 @@ npm run build
 
 ```
 ## 文件说明
->  pro.config.json
-> 本地预览地址及反向代理设置
+*  pro.config.json----本地预览地址及反向代理设置
