@@ -19,6 +19,9 @@
         <a href="./exam.html" target="_blank">exam</a>
       </p>
       <p>
+        <a href="./counter.html" target="_blank">counter</a>
+      </p>
+      <p>
         <button @click="loginOut()">loginOut</button>
       </p>
     </div>
@@ -35,46 +38,31 @@ export default {
     return {
       loginName: "",
       passWord: "",
-      isLogin: false
+      isLogin: this.$store.getters['loginStore/isLogin']
     };
-  },
-  created() {
-    this.isLogin = storage.getStorage("isLogin") === "true";
   },
   methods: {
     login() {
       if (this.loginName && this.passWord) {
-        userLogin(this.loginName, this.passWord).then(res => {
-          if (res.data.code == 200) {
-            this.isLogin = true;
-            storage.setStorage("isLogin", "true");
-            storage.setStorage("userInfo", {
-              loginName: this.loginName,
-              passWord: this.passWord
-            });
-          } else {
-            alert(res.data.message);
-          }
-        });
+        this.$store.dispatch("loginStore/loginAction", {
+            loginName: this.loginName,
+            passWord: this.passWord
+          }).then(res => {
+            this.isLogin = this.$store.getters['loginStore/isLogin']
+          });
       } else {
         console.log("error");
       }
     },
     loginOut() {
-      userLogout().then(res => {
-        if (res.data.code == 200) {
-          storage.removeStorage("isLogin");
-          storage.removeStorage("userInfo");
-          this.resetFrom();
-        } else {
-          alert(res.data.message);
-        }
+      this.$store.dispatch("loginStore/loginOutAction").then(res => {
+        this.resetFrom();
+        this.isLogin = this.$store.getters['loginStore/isLogin'];
       });
     },
     resetFrom() {
       this.loginName = "";
       this.passWord = "";
-      this.isLogin = false;
     }
   }
 };
