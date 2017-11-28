@@ -7,13 +7,13 @@ let argv = process.argv.splice(2),
   rootDir = path.resolve(__dirname, '../');
 
 let tmplDir = path.join(__dirname, '/tmpl/');
-let newDir = path.join(rootDir,'src/pages/' + newDirName);
+let newDir = path.join(rootDir, 'src/pages/' + newDirName);
 
 if (!fs.existsSync(newDir)) {
   fs.mkdirSync(newDir);
   var emitter = walk(tmplDir);
   emitter.on('path', function (filename, stat) {
-    let newPath = path.join(newDir,path.relative(tmplDir, filename));
+    let newPath = path.join(newDir, path.relative(tmplDir, filename));
     if (stat.size > 0) {
       if (newPath.indexOf('tmpl.html') > -1) {
         let newPathHtml = newPath.replace(/tmpl\.html/g, newDirName + '.html');
@@ -36,6 +36,7 @@ if (!fs.existsSync(newDir)) {
     console.log(`${path.relative(rootDir, newDir)} is already!`);
   }
 };
+
 function rmdirsSync(targetPath) {
   try {
     let files = [];

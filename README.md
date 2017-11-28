@@ -15,7 +15,7 @@ npm run dev
 npm run build
 
 # 增加一个tmpl生成，pages下目录结构，从tmpls获取(默认new-tmpl)
-npm run tmpl yourdir     
+npm run tmpl yourdir
 
 ```
 ## 文件说明
