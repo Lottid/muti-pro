@@ -52,7 +52,6 @@ function rmdirsSync(targetPath) {
       fs.rmdirSync(targetPath);
     }
   } catch (e) {
-    log.error("remove director fail! path=" + targetPath + " errorMsg:" + e);
     return false;
   }
   return true;
