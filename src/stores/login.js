@@ -62,16 +62,16 @@ const actions = {
       });
     });
     
-  }
-}
+  };
+};
 
 // getters are functions
 const getters = {
   isLogin: (state) => {
-    return state.isLogin
+    return state.isLogin;
   },
   userInfo: state => state.userInfo
-}
+};
 
 // A Vuex instance is created by combining the state, mutations, actions,
 // and getters.

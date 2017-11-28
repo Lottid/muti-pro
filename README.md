@@ -14,6 +14,9 @@ npm run dev
 # build for production with minification
 npm run build
 
+# 增加一个tmpl生成，pages下目录结构，从tmpls获取(默认new-tmpl)
+npm run tmpl yourdir     
+
 ```
 ## 文件说明
 *  pro.config.json----本地预览地址及反向代理设置
@@ -27,3 +30,4 @@ export default {
   mutations
 }
 ```
+
